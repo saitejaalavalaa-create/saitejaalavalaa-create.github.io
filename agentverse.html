@@ -26,7 +26,7 @@ const steps=[
 ["Vera checks the evidence","Independent checks compare IDs, status, currency, recency and policy applicability.","Vera","A mismatch! Human approval is required.","validate → anomaly=true, authorizedMutation=false"],
 ["A2A agent council","Specialists pass explicit findings for final review and summarization.","Orion","Good work, team! Echo, tell our human.","A2A result messages → consolidation → Echo"],
 ["Response returns home","The user sees a grounded recommendation, not an unauthorized action.","Echo","Possible billing leak spotted. Human review recommended!","Response → evidence, citations, no mutations"]];
-const durations=[5800,4000,6200,6000,6600,7800,7500,6600,6500,9000];
+const durations=[2200,1600,2600,2400,3200,3500,3200,2800,2500,4200];
 function bot(i,x,y,scale=1){let a=agents[i];return '<div class="robot" style="--x:'+x+'%;--y:'+y+'%;--c:'+a[2]+';--d:'+(.2*i)+'s;scale:'+scale+'"><div class="antenna"></div><div class="robotHead"><div class="robotFace"><i class="eye"></i><i class="eye"></i></div></div><div class="robotBody">'+a[3]+'</div><b>'+a[0]+'</b><small>'+a[1]+'</small></div>'}
 $("orion").innerHTML=bot(0,50,47,1.5);$("squad").innerHTML=bot(0,15,43,.85)+bot(1,39,43,.85)+bot(2,63,43,.85)+bot(3,86,43,.85);$("meeting").innerHTML=agents.map((a,i)=>bot(i,11+i*15.8,44,.72)).join("");
 agents.forEach((a,i)=>{let b=document.createElement("button");b.textContent=a[0];b.onclick=()=>$("inspect").innerHTML="<strong>"+a[0]+" — "+a[1]+"</strong><p>"+a[4]+"</p><code style='font-size:11px;color:#9ef0d7'>"+JSON.stringify({from:"Orion",to:a[0],task:"investigate",output:"structured evidence",simulated:true})+"</code>";$("agentbtns").append(b)});
